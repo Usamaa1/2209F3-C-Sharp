@@ -649,6 +649,101 @@ namespace gamespace
 
 
 
+Audionic headphone = new()
+{
+    productName = "Headphone Simple v1",
+    productPrice = 3400,
+    productRatting = 3.3
+};
+
+
+
+Audionic speaker = new()
+{
+    productName = "Speaker Simple v1",
+    productPrice = 15000,
+    productRatting = 5.0
+};
+
+
+
+
+HudaBeauty lipstick = new()
+{
+    productName = "Lipstick Achi",
+    productPrice = 200,
+    productRatting = 1.0,
+    color1 = "Red",
+    color2 = "Baby Pink",
+    color3 = "Magenda",
+    color4 = "Blue"
+};
+
+
+Console.WriteLine($"\nAudionic : \n\n{headphone.prodDesc()} {speaker.prodDesc()}");
+
+Console.WriteLine($"Sales Price: {headphone.prodPrice()}");
+Console.WriteLine($"Sales Price: {speaker.prodPrice()}");
+
+Console.WriteLine($"\nHudaBeauty: \n\n{lipstick.prodDesc()}");
+
+Console.WriteLine($"colors: {lipstick.colorsVariety()}");
+Console.WriteLine($"Sales Price: {lipstick.prodPrice()}");
+
+
+
+
+
+interface IElectronics
+{
+    string prodDesc();
+    double prodPrice();
+}
+
+interface ICosmetics
+{
+    string colorsVariety();
+}
+
+class Audionic : IElectronics
+{
+    public string productName;
+    public double productRatting;
+    public double productPrice;
+    public string prodDesc() {
+        return $"\nProduct Name: {this.productName} \nProduct Ratting: {this.productRatting} \nGross Price: {this.productPrice}";
+    }
+    public double prodPrice()
+    {
+        return this.productPrice + 10;
+    }
+}
+
+class HudaBeauty : IElectronics, ICosmetics
+{
+    public string productName;
+    public double productRatting;
+    public double productPrice;
+    public string color1;
+    public string color2;
+    public string color3;
+    public string color4;
+    public string prodDesc()
+    {
+        return $"\nProduct Name: {this.productName} \nProduct Ratting: {this.productRatting} \nGross Price: {this.productPrice}";
+    }
+    public double prodPrice()
+    {
+        return this.productPrice + 10;
+    }
+
+    public string colorsVariety() 
+    {
+        return $"{this.color1}, {this.color2}, {this.color3}, {this.color4}";
+    }
+}
+
+
 
 
 
